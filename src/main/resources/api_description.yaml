@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Penground API Specification
+  description: |-
+    Penground API exists for fun:
+    - cryptography with fun
+  version: 1.0-SNAPSHOT
+servers:
+  - url: http://localhost:8080/api/v1
+tags:
+  - name: cryptography
+    description: Perform fun encryption / decryption
+paths:
+  /cryptography/encrypt:
+    post:
+      tags:
+        - cryptography
+      summary: Encrypt by specifying algorithm
+      description: Get account information using account number
+      operationId: encrypt
+      requestBody:
+        description: payload to encrypt, encryption algorithm, etc
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EncryptionRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EncryptionResponse'
+
+components:
+  schemas:
+    EncryptionRequest:
+      type: object
+      properties:
+        payload:
+          description: payload to encrypt
+          type: string
+        algorithm:
+          $ref: '#/components/schemas/EncryptionAlgorithm'
+    EncryptionAlgorithm:
+      type: string
+      enum:
+        - LKH
+        - SYS
+    EncryptionResponse:
+      type: object
+      properties:
+        payload:
+          type: string

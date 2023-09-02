@@ -1,0 +1,32 @@
+version: '3'
+services:
+  penground-db:
+    container_name: penground-db
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: penground
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - penground-network
+  penground-app:
+    container_name: penground-app
+    build:
+      context: .
+      dockerfile: ./docker_setup/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      penground-db:
+        condition: service_started
+    networks:
+      - penground-network
+volumes:
+  mysql-data:
+
+networks:
+  penground-network:
