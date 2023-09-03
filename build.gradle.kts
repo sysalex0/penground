@@ -1,8 +1,7 @@
-import groovy.util.MapEntry
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.7.9"
+	id("org.springframework.boot") version "3.0.5"
 	id("io.spring.dependency-management") version "1.1.2"
 	id ("org.openapi.generator") version "6.6.0"
 	kotlin("jvm") version "1.8.22"
@@ -28,17 +27,20 @@ repositories {
 }
 
 dependencies {
+	// Spring boot
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter-validation")
 
+	// Open Api
 	implementation("org.springdoc:springdoc-openapi-data-rest:1.6.0")
 	implementation("org.springdoc:springdoc-openapi-ui:1.6.0")
 	implementation("org.springdoc:springdoc-openapi-kotlin:1.6.0")
 
+	// Database
 	runtimeOnly("com.mysql:mysql-connector-j")
 
+	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	runtimeOnly ("com.h2database:h2")
 }
@@ -66,13 +68,8 @@ openApiGenerate {
 		mapOf(
 			"dateLibrary" to "java8",
 			"interfaceOnly" to "true",
-			"useTags" to "true"
-		)
-	)
-	globalProperties.set(
-		mapOf(
-			"apis" to "",
-			"models" to "",
+			"useTags" to "true",
+			"useSpringBoot3" to "true"
 		)
 	)
 }
