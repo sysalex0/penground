@@ -6,9 +6,8 @@ import penguin.penground.service.cryptography.CryptographyAlgorithmAction
 
 @Service
 class LkhCryptographyAlgorithmAction : CryptographyAlgorithmAction {
-    override fun algorithm(): CryptographyAlgorithm {
-        return CryptographyAlgorithm.lKH
-    }
+    override val algorithm: CryptographyAlgorithm
+        get() = CryptographyAlgorithm.lKH
 
     override fun encrypt(payload: String): String {
         return "LKH encrypt"

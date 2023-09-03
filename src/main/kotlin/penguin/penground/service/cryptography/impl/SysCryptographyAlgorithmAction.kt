@@ -6,9 +6,8 @@ import penguin.penground.service.cryptography.CryptographyAlgorithmAction
 
 @Service
 class SysCryptographyAlgorithmAction : CryptographyAlgorithmAction {
-    override fun algorithm(): CryptographyAlgorithm {
-        return CryptographyAlgorithm.sYS
-    }
+    override val algorithm: CryptographyAlgorithm
+        get() = CryptographyAlgorithm.sYS
 
     override fun encrypt(payload: String): String {
         return "SYS encrypt"

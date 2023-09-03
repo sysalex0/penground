@@ -6,11 +6,10 @@ import penguin.penground.model.CryptographyAlgorithm
 import penguin.penground.service.cryptography.CryptographyAlgorithmAction
 
 @Configuration
-class CryptographyConfig(
-    private val cryptographyAlgorithmActions: List<CryptographyAlgorithmAction>
-) {
+class FactoryConfig {
     @Bean
-    fun cryptographyAlgorithmActionMap(): Map<CryptographyAlgorithm, CryptographyAlgorithmAction> {
-        return cryptographyAlgorithmActions.associateBy { it.algorithm() }
+    fun cryptographyAlgorithmActionMap(cryptographyAlgorithmActions: List<CryptographyAlgorithmAction>)
+            : Map<CryptographyAlgorithm, CryptographyAlgorithmAction> {
+        return cryptographyAlgorithmActions.associateBy { it.algorithm }
     }
 }
