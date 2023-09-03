@@ -43,6 +43,7 @@ dependencies {
 
 	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation("org.jetbrains.kotlin:kotlin-test")
 	runtimeOnly ("com.h2database:h2")
 }
 
