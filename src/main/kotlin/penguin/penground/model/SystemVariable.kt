@@ -6,7 +6,7 @@ import penguin.penground.model.key.SystemVariableId
 @Table(name = "`system_variable`")
 @IdClass(SystemVariableId::class)
 @Entity
-class SystemVariable (
+class SystemVariable(
     @Id
     @Column(name = "variable_type")
     val variableType: String,

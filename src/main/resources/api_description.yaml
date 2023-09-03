@@ -19,12 +19,12 @@ paths:
       description: Get account information using account number
       operationId: encrypt
       requestBody:
+        required: true
         description: payload to encrypt, encryption algorithm, etc
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/EncryptionRequest'
-        required: true
       responses:
         200:
           description: Success
@@ -42,8 +42,11 @@ components:
           description: payload to encrypt
           type: string
         algorithm:
-          $ref: '#/components/schemas/EncryptionAlgorithm'
-    EncryptionAlgorithm:
+          $ref: '#/components/schemas/CryptographyAlgorithm'
+      required:
+        - payload
+        - algorithm
+    CryptographyAlgorithm:
       type: string
       enum:
         - LKH
