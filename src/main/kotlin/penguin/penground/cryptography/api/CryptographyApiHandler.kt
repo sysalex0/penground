@@ -1,7 +1,7 @@
-package penguin.penground.api
+package penguin.penground.cryptography.api
 
 import org.springframework.stereotype.Service
-import penguin.penground.factory.CryptographyAlgorithmFactory
+import penguin.penground.cryptography.factory.CryptographyAlgorithmFactory
 import penguin.penground.model.DecryptionRequest
 import penguin.penground.model.DecryptionResponse
 import penguin.penground.model.EncryptionRequest

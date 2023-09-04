@@ -1,16 +1,16 @@
-package penguin.penground.service.cryptography.impl
+package penguin.penground.cryptography.service.impl
 
 import org.springframework.stereotype.Service
 import penguin.penground.model.CryptographyAlgorithm
-import penguin.penground.service.cryptography.CryptographyAlgorithmAction
+import penguin.penground.cryptography.service.CryptographyAlgorithmService
 
 @Service
-class SysCryptographyAlgorithmAction : CryptographyAlgorithmAction {
+class SysCryptographyAlgorithmService : CryptographyAlgorithmService {
     override val algorithm: CryptographyAlgorithm
         get() = CryptographyAlgorithm.sYS
 
     override fun encrypt(payload: String): String {
-        return "SYS encrypt"
+        TODO("Not yet implemented")
     }
 
     override fun decrypt(payload: String): String {

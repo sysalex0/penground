@@ -1,8 +1,8 @@
-package penguin.penground.service.cryptography
+package penguin.penground.cryptography.service
 
 import penguin.penground.model.CryptographyAlgorithm
 
-interface CryptographyAlgorithmAction {
+interface CryptographyAlgorithmService {
     val algorithm: CryptographyAlgorithm
     fun encrypt(payload: String): String
 

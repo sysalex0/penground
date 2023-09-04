@@ -1,10 +1,11 @@
 package penguin.penground.service.cryptography.impl
 
+import penguin.penground.cryptography.service.impl.LkhCryptographyAlgorithmService
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class LkhCryptographyAlgorithmActionTest {
-    private val lkhCryptographyAlgorithmAction = LkhCryptographyAlgorithmAction()
+class LkhCryptographyAlgorithmServiceTest {
+    private val lkhCryptographyAlgorithmAction = LkhCryptographyAlgorithmService()
 
     @Test
     fun decrypt() {
