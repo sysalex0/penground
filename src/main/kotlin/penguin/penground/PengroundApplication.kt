@@ -8,5 +8,5 @@ import org.springframework.boot.runApplication
 class PengroundApplication
 
 fun main(args: Array<String>) {
-	runApplication<PengroundApplication>(*args)
+    runApplication<PengroundApplication>(*args)
 }

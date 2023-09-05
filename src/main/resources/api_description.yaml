@@ -16,40 +16,97 @@ paths:
       tags:
         - cryptography
       summary: Encrypt by specifying algorithm
-      description: Get account information using account number
-      operationId: encrypt
       requestBody:
-        description: payload to encrypt, encryption algorithm, etc
+        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EncryptionRequest'
-        required: true
+              title: EncryptionRequest
+              allOf:
+                - $ref: '#/components/schemas/CryptographyRequest'
+              example:
+                payload: hello world
+                algorithm: LKH
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EncryptionResponse'
+                title: EncryptionResponse
+                allOf:
+                  - $ref: '#/components/schemas/CryptographyResponse'
+        400:
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /cryptography/decrypt:
+    post:
+      tags:
+        - cryptography
+      summary: Decrypt by specifying algorithm
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: DecryptionRequest
+              allOf:
+                - $ref: '#/components/schemas/CryptographyRequest'
+              example:
+                payload: YUdWc2JHOGdkMjl5YkdSS1MwTXdNU29x
+                algorithm: LKH
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: DecryptionResponse
+                allOf:
+                  - $ref: '#/components/schemas/CryptographyResponse'
+        400:
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
 components:
   schemas:
-    EncryptionRequest:
+    CryptographyRequest:
       type: object
       properties:
         payload:
           description: payload to encrypt
           type: string
         algorithm:
-          $ref: '#/components/schemas/EncryptionAlgorithm'
-    EncryptionAlgorithm:
+          $ref: '#/components/schemas/CryptographyAlgorithm'
+      required:
+        - payload
+        - algorithm
+    CryptographyAlgorithm:
       type: string
       enum:
         - LKH
         - SYS
-    EncryptionResponse:
+    CryptographyResponse:
       type: object
       properties:
         payload:
           type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
+      required:
+        - error
+        - message
