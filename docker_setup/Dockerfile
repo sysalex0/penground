@@ -8,7 +8,7 @@ WORKDIR /app
 COPY build.gradle.kts settings.gradle.kts gradlew gradle /app/
 
 # Copy the oapi specification for ./gradlew build
-COPY /src/main/resources/openapi /app/src/main/resources/openapi
+COPY src/main/resources/openapi /app/src/main/resources/openapi
 
 # Update access permission before using ./gradlew
 RUN chmod +x ./gradlew
