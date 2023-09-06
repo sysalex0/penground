@@ -63,7 +63,7 @@ tasks.withType<Test> {
 
 openApiGenerate {
 	generatorName.set("kotlin-spring")
-	inputSpec.set("$rootDir/src/main/resources/api_description.yaml")
+	inputSpec.set("$rootDir/src/main/resources/openapi/api_description.yaml")
 	outputDir.set("$buildDir/generated")
 	apiPackage.set("$group.penground.api")
 	invokerPackage.set("$group.penground.invoker")

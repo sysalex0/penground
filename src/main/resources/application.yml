@@ -3,8 +3,8 @@ server:
 
 spring:
   datasource:
-    #    url: jdbc:mysql://penground-db:3306/penground?allowPublicKeyRetrieval=true&useSSL=false     # docker-compose
-    url: jdbc:mysql://localhost:3306/penground?allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://penground-db:3306/penground?allowPublicKeyRetrieval=true&useSSL=false     # docker-compose
+#    url: jdbc:mysql://localhost:3306/penground?allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
