@@ -13,6 +13,8 @@ WORKDIR /app
 # Copy all files and assign ownership and usergroup to non-root user
 COPY --chown=penguin:penguin . .
 
+RUN chmod +x ./gradlew
+
 # Build the JAR (Gradle dependencies will be cached from the previous stage)
 RUN ./gradlew build --no-daemon
 
