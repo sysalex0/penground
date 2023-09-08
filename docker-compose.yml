@@ -25,6 +25,11 @@ services:
         condition: service_started
     networks:
       - penground-network
+    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://penground-db:3306/penground?allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:penground
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
 volumes:
   mysql-data:
 
