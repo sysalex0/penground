@@ -1,26 +1,17 @@
 # Use a lightweight base image for the Gradle dependencies layer
 FROM --platform=linux/amd64 openjdk:17-jdk-slim AS builder
 
+# Create non-root user prevent security vulnerbilities
+RUN useradd -ms /bin/bash penguin
+
+# User non-root user
+USER penguin
+
 # Set the working directory inside the container for the dependencies layer
 WORKDIR /app
 
-# Copy only the necessary Gradle files for dependency resolution
-COPY build.gradle.kts settings.gradle.kts gradlew gradle /app/
-
-# Copy the oapi specification for ./gradlew build
-COPY src/main/resources/openapi /app/src/main/resources/openapi
-
-# Update access permission before using ./gradlew
-RUN chmod +x ./gradlew
-
-# Resolve and download Gradle dependencies, expect the build to fail, return 0 and allow the docker to continue execution.
-RUN ./gradlew build --no-daemon || return 0
-
-# Copy all files
-COPY . .
-
-# Update access permission after copy all, ./gradlew replaced
-RUN chmod +x ./gradlew
+# Copy all files and assign ownership and usergroup to non-root user
+COPY --chown=penguin:penguin . .
 
 # Build the JAR (Gradle dependencies will be cached from the previous stage)
 RUN ./gradlew build --no-daemon
