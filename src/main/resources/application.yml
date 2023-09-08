@@ -23,11 +23,14 @@ spring:
       path: /h2o
       settings.trace: false
       settings.web-allow-others: false
+
 logging:
   level:
     org:
       springframework:
-        security: DEBUG
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
 
 management:
   endpoint:

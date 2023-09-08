@@ -48,6 +48,9 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.jetbrains.kotlin:kotlin-test")
 	runtimeOnly ("com.h2database:h2")
+
+	// Development
+	compileOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 tasks.withType<KotlinCompile> {
