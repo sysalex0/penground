@@ -16,7 +16,7 @@ COPY --chown=penguin:penguin . .
 RUN chmod +x ./gradlew
 
 # Build the JAR (Gradle dependencies will be cached from the previous stage)
-RUN ./gradlew build --no-daemon
+RUN ./gradlew clean build -Pprod --no-daemon
 
 # Use a valid JRE 17 image for the final application
 FROM --platform=linux/amd64 eclipse-temurin:17-jre-alpine
@@ -25,7 +25,7 @@ FROM --platform=linux/amd64 eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # Copy the JAR from the builder stage
-COPY --from=builder /app/build/libs/*.jar /app/penground.jar
+COPY --from=builder /app/backend/build/libs/backend*.jar /app/penground.jar
 
 # Expose the port your application is listening on (if applicable)
 EXPOSE 8080
