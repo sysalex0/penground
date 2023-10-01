@@ -28,4 +28,8 @@ tasks {
     named("yarn_openapi") {
         dependsOn("yarn_install")
     }
+
+    named("yarn_test") {
+        dependsOn("yarn_openapi")
+    }
 }
