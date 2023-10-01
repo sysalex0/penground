@@ -136,7 +136,7 @@ const Encryption = ({ disableAlgorithms }: CryptographyModuleProps) => {
           ))}
         </Select>
       </FormControl>
-      <Stack padding={2} spacing={2} direction="row" justifyContent="center">
+      <Stack padding={4} spacing={2} direction="row" justifyContent="center">
         <LoadingButton
           id="encrypt-button"
           onClick={handleEncryptButtonOnClick}

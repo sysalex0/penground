@@ -9,14 +9,17 @@ enum CryptographyMode {
   decryption,
 }
 
-const DISABLED_ALGORITHMS: CryptographyAlgorithm[]  = [CryptographyAlgorithm.Sys];
+const DISABLED_ALGORITHMS: CryptographyAlgorithm[] = [CryptographyAlgorithm.Sys];
 
 const Cryptography = () => {
   const [mode, setMode] = useState<CryptographyMode>(CryptographyMode.encryption);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <CryptographySwitch
+        sx={{
+          marginTop: 8,
+        }}
         value={mode === CryptographyMode.encryption}
         onChange={() =>
           setMode(mode === CryptographyMode.encryption ? CryptographyMode.decryption : CryptographyMode.encryption)
