@@ -20,9 +20,9 @@ services:
       dockerfile: ./docker_setup/Dockerfile
     ports:
       - "8080:8080"
-    depends_on:
-      penground-db:
-        condition: service_started
+#    depends_on:
+#      penground-db:
+#        condition: service_started
     networks:
       - penground-network
     environment:
