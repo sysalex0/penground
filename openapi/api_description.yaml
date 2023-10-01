@@ -6,7 +6,8 @@ info:
     - cryptography with fun
   version: 1.0-SNAPSHOT
 servers:
-  - url: http://localhost:8080/api/v1
+#  - url: http://localhost:8080/api/v1
+  - url: /api/v1
 tags:
   - name: cryptography
     description: Perform fun encryption / decryption
@@ -24,6 +25,7 @@ paths:
               title: EncryptionRequest
               allOf:
                 - $ref: '#/components/schemas/CryptographyRequest'
+                - type: object
               example:
                 payload: hello world
                 algorithm: LKH
@@ -36,6 +38,7 @@ paths:
                 title: EncryptionResponse
                 allOf:
                   - $ref: '#/components/schemas/CryptographyResponse'
+                  - type: object
         400:
           description: Invalid input
           content:
@@ -55,6 +58,7 @@ paths:
               title: DecryptionRequest
               allOf:
                 - $ref: '#/components/schemas/CryptographyRequest'
+                - type: object
               example:
                 payload: YUdWc2JHOGdkMjl5YkdSS1MwTXdNU29x
                 algorithm: LKH
@@ -67,6 +71,7 @@ paths:
                 title: DecryptionResponse
                 allOf:
                   - $ref: '#/components/schemas/CryptographyResponse'
+                  - type: object
         400:
           description: Invalid input
           content:
@@ -97,6 +102,8 @@ components:
       properties:
         payload:
           type: string
+      required:
+        - payload
     ErrorResponse:
       type: object
       properties:

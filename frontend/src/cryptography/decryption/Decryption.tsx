@@ -2,29 +2,36 @@ import LockIcon from '@mui/icons-material/Lock';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {
   Alert,
+  Card,
+  CardContent,
   FormControl,
   InputLabel,
   MenuItem,
-  Paper,
   Select,
   SelectChangeEvent,
   Snackbar,
   SnackbarOrigin,
   Stack,
   TextField,
+  Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
+import { CryptographyAlgorithm, DecryptionRequest } from '../../openapi/generated';
+import Api from '../../openapi';
+import { CryptographyModuleProps } from '../common/component-props';
+import { AxiosError } from 'axios';
 
 interface SnackbarState extends SnackbarOrigin {
   open: boolean;
 }
 
-const Decryption = () => {
+const Decryption = ({ disableAlgorithms }: CryptographyModuleProps) => {
   const [messageToDecrypt, setMessageToDecrypt] = useState('');
-  const [algorithm, setAlgorithm] = useState('');
+  const [algorithm, setAlgorithm] = useState<CryptographyAlgorithm | ''>('');
   const [decryptedMessage, setDecryptedMessage] = useState('');
 
   const [loadingStates, setLoadingStates] = useState<{ [key: string]: boolean }>({});
+  const [errorMessage, setErrorMessage] = useState('');
   const [errorSnackbarState, setErrorSnackbarState] = React.useState<SnackbarState>({
     open: false,
     vertical: 'top',
@@ -42,25 +49,34 @@ const Decryption = () => {
     return messageToDecrypt !== '' && algorithm !== '';
   };
 
-  const handleDecryptButtonOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDecryptButtonOnClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     const buttonId = e.currentTarget.id;
     updateLoadingState(buttonId, true);
 
     if (!isValidateInput()) {
+      setErrorMessage('Please enter all required input!');
       handleErrorBarClick({ vertical: 'top', horizontal: 'center' });
       return;
     }
 
-    const data = {
-      messageToDecrypt: messageToDecrypt,
-      algorithm: algorithm,
+    const requestBody: DecryptionRequest = {
+      payload: messageToDecrypt,
+      algorithm: algorithm as CryptographyAlgorithm,
     };
 
-    // call api
-    console.log(data);
-
-    setDecryptedMessage('decrypted');
-    updateLoadingState(buttonId, true);
+    try {
+      const response = await Api.Cryptography.cryptographyDecryptPost(requestBody);
+      setDecryptedMessage(response.data.payload);
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        setErrorMessage(err.message);
+      } else {
+        setErrorMessage('Server Error!');
+      }
+      setErrorSnackbarState({ ...errorSnackbarState, open: true });
+    } finally {
+      updateLoadingState(buttonId, false);
+    }
   };
 
   const handleErrorBarClick = (newState: SnackbarOrigin) => {
@@ -85,7 +101,7 @@ const Decryption = () => {
         label="Message to Decrypt"
         id="message-to-decrypt"
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          setMessageToDecrypt(event.target.value as string);
+          setMessageToDecrypt(event.target.value);
         }}
       />
       <FormControl fullWidth>
@@ -97,16 +113,17 @@ const Decryption = () => {
           defaultValue={algorithm}
           value={algorithm}
           onChange={(event: SelectChangeEvent) => {
-            setAlgorithm(event.target.value);
+            setAlgorithm(event.target.value as CryptographyAlgorithm);
           }}
         >
-          <MenuItem value="LKH">LKH</MenuItem>
-          <MenuItem value="SYS" disabled>
-            SYS
-          </MenuItem>
+          {Object.entries(CryptographyAlgorithm).map(([key, value]) => (
+            <MenuItem key={key} value={value} disabled={disableAlgorithms.includes(value)}>
+              {value}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
-      <Stack padding={2} spacing={2} direction="row" justifyContent="center">
+      <Stack padding={4} spacing={2} direction="row" justifyContent="center">
         <LoadingButton
           id="decrypt-button"
           onClick={handleDecryptButtonOnClick}
@@ -119,10 +136,16 @@ const Decryption = () => {
           <span>Decrypt</span>
         </LoadingButton>
       </Stack>
-      <Paper elevation={3}>
-        <span>{decryptedMessage}</span>
-      </Paper>
-
+      {decryptedMessage !== '' && (
+        <Card>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            Decrypted result:
+          </Typography>
+          <CardContent>
+            <Typography>{decryptedMessage}</Typography>
+          </CardContent>
+        </Card>
+      )}
       <Snackbar
         id="error-snackbar"
         anchorOrigin={{ vertical: errorSnackbarState.vertical, horizontal: errorSnackbarState.horizontal }}
@@ -132,7 +155,7 @@ const Decryption = () => {
         key={errorSnackbarState.vertical + errorSnackbarState.horizontal}
       >
         <Alert onClose={handleErrorBarClose} severity="error">
-          Please enter all required input!
+          {errorMessage}
         </Alert>
       </Snackbar>
     </>

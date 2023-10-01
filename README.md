@@ -75,8 +75,8 @@ Not yet set up / needed right now
 Let's try this:
 
 ```sh
-gradlew clean build -Pprod
-java -jar backend/build/libs/*.jar
+./gradlew clean build -Pprod
+java -jar backend/build/libs/backend-0.0.1-SNAPSHOT.jar
 ```
 
 Then open your browser at http://localhost:8080

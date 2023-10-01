@@ -10,7 +10,7 @@ import kotlin.random.Random
 class LkhCryptographyAlgorithmService : CryptographyAlgorithmService {
     companion object {
         private const val END_OF_PAYLOAD = "JKC01**"
-        private const val MAX_NUM_OF_ITERATION = 20
+        private const val MAX_NUM_OF_ITERATION = 10
     }
 
     override val algorithm: CryptographyAlgorithm

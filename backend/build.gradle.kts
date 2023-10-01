@@ -33,9 +33,6 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 
-	// frontend
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-
 	// Open Api
 	implementation("org.springdoc:springdoc-openapi-data-rest:1.6.0")
 	implementation("org.springdoc:springdoc-openapi-ui:1.6.0")
@@ -66,7 +63,7 @@ tasks.withType<Test> {
 
 openApiGenerate {
 	generatorName.set("kotlin-spring")
-	inputSpec.set("$rootDir/backend/src/main/resources/openapi/api_description.yaml")
+	inputSpec.set("$rootDir/openapi/api_description.yaml")
 	outputDir.set("$buildDir/generated")
 	apiPackage.set("$group.penground.api")
 	invokerPackage.set("$group.penground.invoker")
@@ -83,7 +80,7 @@ openApiGenerate {
 }
 
 openApiValidate {
-	inputSpec.set("$rootDir/backend/src/main/resources/api_description.yaml")
+	inputSpec.set("$rootDir/openapi/api_description.yaml")
 	recommend.set(true)
 }
 

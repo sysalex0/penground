@@ -3,7 +3,7 @@ package penguin.penground.cryptography.controller
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 import penguin.penground.api.CryptographyApi
-import penguin.penground.cryptography.api.CryptographyApiHandler
+import penguin.penground.cryptography.handler.CryptographyApiHandler
 import penguin.penground.model.DecryptionRequest
 import penguin.penground.model.DecryptionResponse
 import penguin.penground.model.EncryptionRequest

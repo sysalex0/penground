@@ -1,9 +1,13 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-### com.github.node-gradle.node cache
+# openapi generated
+src/openapi/generated
+openapitools.json
+
+# com.github.node-gradle.node cache
 .cache
 
-### Gradle template
+# Gradle template
 .gradle
 build
 

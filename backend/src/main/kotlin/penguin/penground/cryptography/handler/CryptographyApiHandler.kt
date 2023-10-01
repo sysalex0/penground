@@ -1,4 +1,4 @@
-package penguin.penground.cryptography.api
+package penguin.penground.cryptography.handler
 
 import org.springframework.stereotype.Service
 import penguin.penground.cryptography.factory.CryptographyAlgorithmFactory
