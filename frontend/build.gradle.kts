@@ -18,10 +18,14 @@ node {
 
 tasks {
     named("yarn_build") {
-        dependsOn("yarn_install", "yarn_openapi", "yarn_cache_clean")
+        dependsOn("yarn_cache_clean")
     }
 
-    named("yarn_test") {
-        dependsOn("yarn_install", "yarn_openapi", "yarn_cache_clean")
+    named("yarn_cache_clean") {
+        dependsOn("yarn_openapi")
+    }
+
+    named("yarn_openapi") {
+        dependsOn("yarn_install")
     }
 }
