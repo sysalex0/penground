@@ -20,10 +20,10 @@ node {
 
 tasks {
     named("yarn_build") {
-        dependsOn("yarn_install")
+        dependsOn("yarn_install", "yarn_openapi")
     }
 
     named("yarn_test") {
-        dependsOn("yarn_install")
+        dependsOn("yarn_install", "yarn_openapi")
     }
 }
