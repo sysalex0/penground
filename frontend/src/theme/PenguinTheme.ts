@@ -18,7 +18,7 @@ const PenguinTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Arial, sans-serif',
+    fontFamily: 'DelaGothicOne, Arial, sans-serif',
     fontSize: 16,
     h1: {
       fontSize: '2.5rem',

@@ -3,6 +3,7 @@ import Decryption from './decryption/Decryption';
 import { useState } from 'react';
 import CryptographySwitch from './switch/CryptographySwitch';
 import { CryptographyAlgorithm } from '../openapi/generated';
+import { Box } from '@mui/material';
 
 enum CryptographyMode {
   encryption,
@@ -15,7 +16,7 @@ const Cryptography = () => {
   const [mode, setMode] = useState<CryptographyMode>(CryptographyMode.encryption);
 
   return (
-    <div className="overflow-hidden">
+    <Box sx={{ textAlign: 'center' }}>
       <CryptographySwitch
         sx={{
           marginTop: 32,
@@ -30,7 +31,7 @@ const Cryptography = () => {
       ) : (
         <Decryption disableAlgorithms={DISABLED_ALGORITHMS} />
       )}
-    </div>
+    </Box>
   );
 };
 
