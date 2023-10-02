@@ -1,15 +1,21 @@
-import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
-import PenguinTheme from './theme/penguin';
+import PenguinTheme from './theme/PenguinTheme';
 import Cryptography from './cryptography/Cryptography';
+import { Box } from '@mui/material';
+import SwipeableEdgeDrawer from './global/SwipeableEdgeDrawer';
 
 function App() {
   return (
-    <div className="App">
+    <Box
+      sx={{
+        minHeight: '100vh',
+      }}
+    >
       <ThemeProvider theme={PenguinTheme}>
         <Cryptography />
+        <SwipeableEdgeDrawer />
       </ThemeProvider>
-    </div>
+    </Box>
   );
 }
 
