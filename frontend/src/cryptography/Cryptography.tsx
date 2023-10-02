@@ -18,7 +18,7 @@ const Cryptography = () => {
     <div className="overflow-hidden">
       <CryptographySwitch
         sx={{
-          marginTop: 8,
+          marginTop: 32,
         }}
         value={mode === CryptographyMode.encryption}
         onChange={() =>
