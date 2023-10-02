@@ -1,6 +1,6 @@
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
-import PenguinTheme from './theme/penguin';
+import PenguinTheme from './theme/PenguinTheme';
 import Cryptography from './cryptography/Cryptography';
 
 function App() {

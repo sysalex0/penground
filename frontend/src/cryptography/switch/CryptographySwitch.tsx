@@ -5,6 +5,7 @@ const CryptographySwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
   padding: 7,
+  textAlign: 'center',
   '& .MuiSwitch-switchBase': {
     margin: 1,
     padding: 0,
