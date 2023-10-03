@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { Avatar } from '@mui/material';
 
 const drawerBleeding = 56;
 
@@ -27,7 +26,7 @@ const Puller = styled(Box)(({ theme }) => ({
   borderRadius: 3,
   position: 'absolute',
   top: 4,
-  left: 'calc(50% - 22px)',
+  left: 'calc(50% - 16px)',
 }));
 
 export default function SwipeableEdgeDrawer() {
@@ -73,7 +72,9 @@ export default function SwipeableEdgeDrawer() {
         >
           <Puller />
           <Box sx={{ textAlign: 'center', pt: 2 }}>
-            <Button onClick={toggleDrawer(!open)} startIcon={<Avatar alt="Penground" src="/logo512.png" />} />
+            <Button onClick={toggleDrawer(!open)}>
+              <img src="/logo512.png" width="40" />
+            </Button>
           </Box>{' '}
         </StyledBox>
         <StyledBox
