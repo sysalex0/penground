@@ -2,7 +2,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import PenguinTheme from './theme/PenguinTheme';
 import Cryptography from './cryptography/Cryptography';
 import { Box } from '@mui/material';
-import SwipeableEdgeDrawer from './global/SwipeableEdgeDrawer';
+import SwipeableEdgeDrawer from './global/bottomDrawer/SwipeableEdgeDrawer';
 
 function App() {
   return (
