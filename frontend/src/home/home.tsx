@@ -1,20 +1,19 @@
-import React from 'react';
+import { Box, Typography } from '@mui/material';
+import Cryptography from '../cryptography/Cryptography';
 
-const WelcomePage: React.FC = () => (
-  <html lang="en">
-    <head>
-      <title>Welcome to Penground</title>
-    </head>
-    <body>
-      <h1>Welcome to Penground</h1>
-      <h2>Explore my playgrounds:</h2>
-      <ul>
-        <li>
-          <a href="cryptography">Cryptography</a>
-        </li>
-      </ul>
-    </body>
-  </html>
+const pengrounds = [Cryptography];
+// Get the current date
+const currentDate = new Date().toDateString();
+const numericDate = Number(new Date(currentDate));
+// Use the numeric date to generate a random number
+const randomNum = Math.floor(Math.abs(Math.sin(numericDate)) * pengrounds.length);
+const DailyRandomPenground: React.ComponentType<unknown> = pengrounds[randomNum];
+
+const Home = () => (
+  <Box sx={{ textAlign: 'center', pt: 10 }}>
+    <Typography variant="h1">Daily Random Penground Home</Typography>
+    {<DailyRandomPenground />}
+  </Box>
 );
 
-export default WelcomePage;
+export default Home;
