@@ -6,8 +6,13 @@ info:
     - cryptography with fun
   version: 1.0-SNAPSHOT
 servers:
-#  - url: http://localhost:8080/api/v1
-  - url: /api/v1
+  - url: '{domain}/api/v1'
+    variables:
+      domain:
+        description: When deploy on same port / local
+        default: http://localhost:8080
+        enum:
+          - http://localhost:8080
 tags:
   - name: cryptography
     description: Perform fun encryption / decryption
