@@ -35,3 +35,7 @@ management:
   endpoint:
     health:
       show-details: always
+
+cors:
+  # -Pprod is still working as prod FE is on same port as BE, reserve for future FE BE independent
+  allowedOrigins: http://localhost:3000
