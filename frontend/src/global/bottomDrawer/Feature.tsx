@@ -19,7 +19,7 @@ const features: FeatureData[] = [
   },
   {
     title: 'Home',
-    description: 'Random',
+    description: 'Daily Random Penground ',
     link: '',
   },
 ];
