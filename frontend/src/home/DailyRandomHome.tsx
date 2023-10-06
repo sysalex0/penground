@@ -9,11 +9,11 @@ const numericDate = Number(new Date(currentDate));
 const randomNum = Math.floor(Math.abs(Math.sin(numericDate)) * pengrounds.length);
 const DailyRandomPenground: React.ComponentType<unknown> = pengrounds[randomNum];
 
-const Home = () => (
-``  <Box id="home" sx={{ textAlign: 'center', pt: 6 }}>
+const DailyRandomHome = () => (
+  <Box id="home" sx={{ textAlign: 'center', pt: 6 }}>
     <Typography variant="h1">Daily Random Penground Home</Typography>
     {<DailyRandomPenground />}
   </Box>
 );
 
-export default Home;
+export default DailyRandomHome;
