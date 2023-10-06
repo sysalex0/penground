@@ -1,9 +1,28 @@
 import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Divider } from '@mui/material';
-import '../../image/penguinBall/transparant/strange/00009-970974721.png';
+import { Link } from 'react-router-dom';
+
 // Import the require.context function
-const images = require.context('../../image/penguinBall/transparant/strange', true);
-const imageList = images.keys().map((image) => images(image));
-const randomInt = Math.floor(Math.random() * imageList.length);
+const imageContext = require.context('../../image/penguinBall/transparant/strange', true);
+const avators = imageContext.keys().map((image) => imageContext(image));
+
+interface FeatureData {
+  title: string;
+  description: string;
+  link: string;
+}
+
+const features: FeatureData[] = [
+  {
+    title: 'Penground Cryptography',
+    description: 'Using top standard of 6uo encryption and decryption',
+    link: 'cryptography',
+  },
+  {
+    title: 'Home',
+    description: 'Daily Random Penground ',
+    link: '',
+  },
+];
 
 const Features = () => {
   return (
@@ -13,16 +32,23 @@ const Features = () => {
           bgcolor: 'background.paper',
         }}
       >
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar alt="Penground" src={imageList[randomInt]} />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Penground Cryptography"
-            secondary="Using top standard of 6uo encryption and decryption"
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
+        {features.map((feature) => {
+          const randomNum = Math.floor(Math.random() * avators.length);
+
+          return (
+            <div key={feature.title}>
+              <Link to={feature.link}>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar alt="Penground" src={avators[randomNum]} />
+                  </ListItemAvatar>
+                  <ListItemText primary={feature.title} secondary={feature.description} />
+                </ListItem>
+              </Link>
+              <Divider variant="inset" component="li" />
+            </div>
+          );
+        })}
       </List>
     </>
   );
