@@ -3,8 +3,9 @@ import PenguinTheme from './theme/PenguinTheme';
 import SwipeableEdgeDrawer from './global/bottomDrawer/SwipeableEdgeDrawer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
-import DailyRandomHome from './home/DailyRandomHome';
-import Cryptography from './cryptography/Cryptography';
+import DailyRandomHomePage from './home/DailyRandomHomePage';
+import CryptographyPage from './cryptography/CryptographyPage';
+import ErrorPage from './error/ErrorPage';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <BrowserRouter>
           <div className="page-common">
             <Routes>
-              <Route path="/" element={<DailyRandomHome />} />
-              <Route path="cryptography" element={<Cryptography />} />
+              <Route path="/" element={<DailyRandomHomePage />} />
+              <Route path="cryptography" element={<CryptographyPage />} />
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </div>
           <SwipeableEdgeDrawer />

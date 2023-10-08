@@ -12,11 +12,11 @@ enum CryptographyMode {
 
 const DISABLED_ALGORITHMS: CryptographyAlgorithm[] = [CryptographyAlgorithm.Sys];
 
-const Cryptography = () => {
+const CryptographyPage = () => {
   const [mode, setMode] = useState<CryptographyMode>(CryptographyMode.encryption);
 
   return (
-    <Box sx={{ textAlign: 'center' }}>
+    <Box>
       <CryptographySwitch
         sx={{
           marginTop: 32,
@@ -35,4 +35,4 @@ const Cryptography = () => {
   );
 };
 
-export default Cryptography;
+export default CryptographyPage;
