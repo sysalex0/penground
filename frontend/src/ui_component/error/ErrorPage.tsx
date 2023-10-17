@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import errorPenguinBall from '../image/penguinBall/transparant/error/00016-970974728.png';
+import errorPenguinBall from '../../image/penguinBall/transparant/error/00016-970974728.png';
 import './Error.scss';
 
 const ErrorPage = () => {

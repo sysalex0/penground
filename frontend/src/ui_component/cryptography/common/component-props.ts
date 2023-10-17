@@ -1,4 +1,4 @@
-import { CryptographyAlgorithm } from '../../openapi/generated';
+import { CryptographyAlgorithm } from '../../../openapi/generated';
 
 interface CryptographyModuleProps {
   disableAlgorithms: CryptographyAlgorithm[];

@@ -16,8 +16,8 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { CryptographyAlgorithm, DecryptionRequest } from '../../openapi/generated';
-import Api from '../../openapi';
+import { CryptographyAlgorithm, DecryptionRequest } from '../../../openapi/generated';
+import Api from '../../../openapi';
 import { CryptographyModuleProps } from '../common/component-props';
 import { AxiosError } from 'axios';
 

@@ -2,7 +2,7 @@ import Encryption from './encryption/Encryption';
 import Decryption from './decryption/Decryption';
 import { useState } from 'react';
 import CryptographySwitch from './switch/CryptographySwitch';
-import { CryptographyAlgorithm } from '../openapi/generated';
+import { CryptographyAlgorithm } from '../../openapi/generated';
 import { Box } from '@mui/material';
 
 enum CryptographyMode {
