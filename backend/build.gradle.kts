@@ -30,8 +30,8 @@ dependencies {
 	// Spring boot
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
+//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 	// Open Api
 	implementation("org.springdoc:springdoc-openapi-data-rest:1.6.0")
