@@ -2,7 +2,7 @@ import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Divider } from '@
 import { Link } from 'react-router-dom';
 
 // Import the require.context function
-const imageContext = require.context('../../image/penguinBall/transparant/strange', true);
+const imageContext = require.context('../../../image/penguinBall/transparant/strange', true);
 const avators = imageContext.keys().map((image) => imageContext(image));
 
 interface FeatureData {
