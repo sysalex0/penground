@@ -1,0 +1,17 @@
+{
+  // auto save when windows not focus
+  "files.autoSave": "onFocusChange",
+  // gradle disable for java
+  "java.compile.nullAnalysis.mode": "disabled",
+
+  // eslint linting auto fix the following language
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  // set default formatter to Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // enable format on save
+  "editor.formatOnSave": true,
+  // enable ESLint fix error
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
