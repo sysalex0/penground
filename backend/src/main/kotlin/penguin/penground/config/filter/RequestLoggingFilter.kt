@@ -17,7 +17,7 @@ class RequestLoggingFilter {
         filter.setBeforeMessagePrefix("Incoming request: ")
         filter.setBeforeMessageSuffix(", passed from servlet")
         filter.setAfterMessagePrefix("Pass request to controller with payload: ")
-        if (!isIncludePayload){
+        if (!isIncludePayload) {
             filter.setAfterMessageSuffix(", hid request payload if exist due to security concern")
         }
         return filter

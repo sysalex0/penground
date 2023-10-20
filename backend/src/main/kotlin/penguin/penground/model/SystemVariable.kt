@@ -1,17 +1,17 @@
-//package penguin.penground.model
+// package penguin.penground.model
 //
-//import jakarta.persistence.*
-//import java.io.Serializable
+// import jakarta.persistence.*
+// import java.io.Serializable
 //
-//class SystemVariableId(
+// class SystemVariableId(
 //    private val variableType: String,
 //    private val variableCode: String
-//) : Serializable
+// ) : Serializable
 //
-//@Table(name = "`system_variable`")
-//@IdClass(SystemVariableId::class)
-//@Entity
-//class SystemVariable(
+// @Table(name = "`system_variable`")
+// @IdClass(SystemVariableId::class)
+// @Entity
+// class SystemVariable(
 //    @Id
 //    @Column(name = "variable_type")
 //    val variableType: String,
@@ -20,4 +20,4 @@
 //    val variableCode: String,
 //    @Column(name = "variable_content", nullable = false)
 //    val variableContent: String
-//)
+// )

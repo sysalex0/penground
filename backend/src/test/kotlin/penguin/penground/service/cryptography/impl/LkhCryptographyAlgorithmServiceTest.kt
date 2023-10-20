@@ -9,7 +9,6 @@ class LkhCryptographyAlgorithmServiceTest {
 
     @Test
     fun decrypt() {
-
         val expectedString = "hihi bye bye"
         val encryptedString = lkhCryptographyAlgorithmAction.encrypt(expectedString)
         val actualString = lkhCryptographyAlgorithmAction.decrypt(encryptedString)

@@ -1,8 +1,8 @@
 package penguin.penground.cryptography.factory
 
 import org.springframework.stereotype.Component
-import penguin.penground.model.CryptographyAlgorithm
 import penguin.penground.cryptography.service.CryptographyAlgorithmService
+import penguin.penground.model.CryptographyAlgorithm
 
 @Component
 class CryptographyAlgorithmFactory(
