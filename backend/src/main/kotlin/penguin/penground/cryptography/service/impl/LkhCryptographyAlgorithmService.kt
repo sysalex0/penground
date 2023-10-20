@@ -1,8 +1,8 @@
 package penguin.penground.cryptography.service.impl
 
 import org.springframework.stereotype.Service
-import penguin.penground.model.CryptographyAlgorithm
 import penguin.penground.cryptography.service.CryptographyAlgorithmService
+import penguin.penground.model.CryptographyAlgorithm
 import java.util.*
 import kotlin.random.Random
 
@@ -28,14 +28,14 @@ class LkhCryptographyAlgorithmService : CryptographyAlgorithmService {
 
     override fun decrypt(payload: String): String {
         var decryptedPayload = payload
-        repeat(MAX_NUM_OF_ITERATION)
-        {
+        repeat(MAX_NUM_OF_ITERATION) {
             decryptedPayload = String(Base64.getDecoder().decode(decryptedPayload))
-            if (decryptedPayload.endsWith(END_OF_PAYLOAD))
+            if (decryptedPayload.endsWith(END_OF_PAYLOAD)) {
                 return decryptedPayload.substring(
                     0,
                     decryptedPayload.length - END_OF_PAYLOAD.length
                 )
+            }
         }
         throw Exception("The payload is not encrypted by $algorithm algorithm")
     }
