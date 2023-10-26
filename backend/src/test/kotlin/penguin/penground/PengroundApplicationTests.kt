@@ -1,10 +1,9 @@
 package penguin.penground
 
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
+import penguin.penground.integration.BaseIntegrationTest
 
-@SpringBootTest
-class PengroundApplicationTests {
+class PengroundApplicationTests: BaseIntegrationTest() {
 
     @Test
     fun contextLoads() {
