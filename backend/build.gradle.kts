@@ -39,12 +39,13 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-kotlin:1.6.0")
 
 	// Database
-	runtimeOnly("com.mysql:mysql-connector-j")
+//	runtimeOnly("com.mysql:mysql-connector-j")
 
 	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.jetbrains.kotlin:kotlin-test")
-	runtimeOnly ("com.h2database:h2")
+	testImplementation ("org.mockito.kotlin:mockito-kotlin:5.1.0")
+//	runtimeOnly ("com.h2database:h2")
 
 	// Development
 	compileOnly("org.springframework.boot:spring-boot-devtools")
