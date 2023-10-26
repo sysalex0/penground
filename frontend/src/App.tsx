@@ -6,6 +6,7 @@ import './App.scss';
 import DailyRandomHomePage from './ui_component/home/DailyRandomHomePage';
 import CryptographyPage from './ui_component/cryptography/CryptographyPage';
 import ErrorPage from './ui_component/error/ErrorPage';
+import AboutPage from './ui_component/about/AboutPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Routes>
               <Route path="/" element={<DailyRandomHomePage />} />
               <Route path="cryptography" element={<CryptographyPage />} />
+              <Route path="about" element={<AboutPage />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </div>
