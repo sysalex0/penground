@@ -4,7 +4,6 @@ plugins {
 	id("org.springframework.boot") version "3.1.0"
 	id("io.spring.dependency-management") version "1.1.2"
 	id ("org.openapi.generator") version "6.6.0"
-	id ("org.jlleitschuh.gradle.ktlint") version "11.6.1"
 	kotlin("jvm") version "1.8.22"
 	kotlin("plugin.spring") version "1.8.22"
 	kotlin("plugin.jpa") version "1.8.22"
@@ -103,18 +102,4 @@ if (project.hasProperty("prod")) {
 			into("static")
 		}
 	}
-}
-
-// ktlint config
-configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
-	debug.set(true)
-	filter {
-		exclude{ it.file.path.contains("$buildDir") }
-	}
-}
-tasks.named("runKtlintFormatOverMainSourceSet") {
-	dependsOn("openApiGenerate")
-}
-tasks.named("runKtlintCheckOverMainSourceSet") {
-	dependsOn("runKtlintFormatOverMainSourceSet")
 }
