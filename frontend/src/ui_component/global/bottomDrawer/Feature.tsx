@@ -18,6 +18,11 @@ const features: FeatureData[] = [
     link: 'cryptography',
   },
   {
+    title: 'About',
+    description: 'About Penground and me',
+    link: 'about',
+  },
+  {
     title: 'Home',
     description: 'Daily Random Penground ',
     link: '',
