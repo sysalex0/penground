@@ -13,7 +13,6 @@ import penguin.penground.model.CryptographyAlgorithm
 import penguin.penground.model.DecryptionRequest
 import penguin.penground.model.EncryptionRequest
 
-
 class CryptographyControllerTest : BaseIntegrationTest() {
     @Autowired
     private lateinit var mockMvc: MockMvc
@@ -28,7 +27,6 @@ class CryptographyControllerTest : BaseIntegrationTest() {
                 .content(objectMapper.writeValueAsBytes(request))
                 .contentType(MediaType.APPLICATION_JSON)
         )
-
             .andExpect(status().is2xxSuccessful())
             .andExpect(jsonPath("$.payload").isNotEmpty)
             .andExpect(jsonPath("$.payload").value(not(request.payload)))
@@ -44,7 +42,6 @@ class CryptographyControllerTest : BaseIntegrationTest() {
                 .content(objectMapper.writeValueAsBytes(request))
                 .contentType(MediaType.APPLICATION_JSON)
         )
-
             .andExpect(status().is2xxSuccessful())
             .andExpect(jsonPath("$.payload").isNotEmpty)
             .andExpect(jsonPath("$.payload").value("testing"))

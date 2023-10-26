@@ -10,9 +10,8 @@ import penguin.penground.PengroundApplication
 @SpringBootTest(classes = [PengroundApplication::class])
 // add a MockMvc instance to the application context
 @AutoConfigureMockMvc
-abstract class BaseIntegrationTest{
+abstract class BaseIntegrationTest {
     // get the objectMapper from application context
     @Autowired
     protected lateinit var objectMapper: ObjectMapper
 }
-
