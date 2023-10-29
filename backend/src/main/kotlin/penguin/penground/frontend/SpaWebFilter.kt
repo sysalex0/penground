@@ -9,11 +9,11 @@ import org.springframework.util.StringUtils
 import org.springframework.web.filter.OncePerRequestFilter
 import java.io.IOException
 
-@Component
 /**
  * This class is for Single Web Application (SPA). If separate build frontend(FE) and backend(BE), this class is meaningless
  * It is only applicable when the build bundling frontend and backend
  */
+@Component
 class SpaWebFilter : OncePerRequestFilter() {
     companion object {
         private const val BACKEND_URIS_PREFIX = "/api"
