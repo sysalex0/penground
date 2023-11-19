@@ -4,6 +4,7 @@ import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletException
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.stereotype.Component
 import org.springframework.util.StringUtils
 import org.springframework.web.filter.OncePerRequestFilter
@@ -13,6 +14,7 @@ import java.io.IOException
  * This class is for Single Web Application (SPA). If separate build frontend(FE) and backend(BE), this class is meaningless
  * It is only applicable when the build bundling frontend and backend
  */
+@ConditionalOnProperty(name = ["bundle"], havingValue = "true")
 @Component
 class SpaWebFilter : OncePerRequestFilter() {
     companion object {

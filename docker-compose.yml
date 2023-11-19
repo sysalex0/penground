@@ -17,7 +17,7 @@ services:
     container_name: penground-app
     build:
       context: .
-      dockerfile: ./docker_setup/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
 #    depends_on:

@@ -96,7 +96,10 @@ configure<SourceSetContainer> {
     }
 }
 
-if (project.hasProperty("prod")) {
+// config task jar to disable generating *plain.jar
+tasks.jar { enabled = false }
+
+if (project.hasProperty("bundle")) {
     tasks.withType<Jar> {
         dependsOn(":frontend:yarn_build")
 
