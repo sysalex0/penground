@@ -2,36 +2,33 @@ version: '3'
 services:
   penground-db:
     container_name: penground-db
-    image: mysql:8.0
+    image: postgres
     restart: always
-    environment:
-      MYSQL_DATABASE: penground
-      MYSQL_ROOT_PASSWORD: password
     ports:
-      - "3306:3306"
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: penground
     volumes:
-      - mysql-data:/var/lib/mysql
+      - pgdata:/var/lib/postgresql/data
     networks:
       - penground-network
   penground-app:
     container_name: penground-app
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     ports:
       - "8080:8080"
-#    depends_on:
-#      penground-db:
-#        condition: service_started
+    depends_on:
+      penground-db:
+        condition: service_started
     networks:
       - penground-network
     environment:
-#      - SPRING_DATASOURCE_URL=jdbc:mysql://penground-db:3306/penground?allowPublicKeyRetrieval=true&useSSL=false
-      - SPRING_DATASOURCE_URL=jdbc:h2:mem:penground
-      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://penground-db:5432/penground
+      - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=password
 volumes:
-  mysql-data:
+  pgdata:
 
 networks:
   penground-network:

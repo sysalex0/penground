@@ -32,7 +32,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-validation")
-// 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+ 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     // Open Api
     implementation("org.springdoc:springdoc-openapi-data-rest:1.6.0")
@@ -40,13 +40,14 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-kotlin:1.6.0")
 
     // Database
-// 	runtimeOnly("com.mysql:mysql-connector-j")
+    implementation ("org.postgresql:postgresql")
 
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
-// 	runtimeOnly ("com.h2database:h2")
+    testImplementation("io.zonky.test:embedded-database-spring-test:2.3.0")
+    testImplementation("io.zonky.test:embedded-postgres:2.0.4")
 
     // Development
     compileOnly("org.springframework.boot:spring-boot-devtools")

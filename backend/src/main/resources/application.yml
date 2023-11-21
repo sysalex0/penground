@@ -3,26 +3,21 @@ server:
 
 spring:
   datasource:
-#    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/penground?allowPublicKeyRetrieval=true&useSSL=false}
-#    username: ${SPRING_DATASOURCE_USERNAME:root}
-#    password: ${SPRING_DATASOURCE_PASSWORD:password}
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:h2:mem:penground
-    username: penguin
-    password: playground
-    driver-class-name: org.h2.Driver
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/penground}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
   jpa:
     hibernate:
-      # [dev only] config for create table by annotation
+      # [ddl-auto]
+      # update – On application start-up, update the existing tables to match the schema Hibernate expects if necessary.
+      # validate – On application start-up, check that the existing tables match the schema Hibernate expects, and throw an exception if they do not match.
       ddl-auto: update
     show-sql: true
-  h2:
-    console.enabled: true
-    console:
-      path: /h2o
-      settings.trace: false
-      settings.web-allow-others: false
-
+    properties:
+      hibernate:
+        dialect=org:
+          hibernate:
+            dialect: PostgreSQLDialect
 logging:
   level:
     org:
@@ -39,3 +34,5 @@ management:
 cors:
   # -Pprod is still working as prod FE is on same port as BE, reserve for future FE BE independent
   allowedOrigins: http://localhost:3000
+
+zonky.test.database.provider: Zonky
