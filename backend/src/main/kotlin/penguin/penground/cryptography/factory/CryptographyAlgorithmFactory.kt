@@ -6,7 +6,7 @@ import penguin.penground.model.CryptographyAlgorithm
 
 @Component
 class CryptographyAlgorithmFactory(
-    cryptographyAlgorithmServices: List<CryptographyAlgorithmService>,
+    cryptographyAlgorithmServices: List<CryptographyAlgorithmService>
 ) {
     val cryptographyAlgorithmServiceMap: Map<CryptographyAlgorithm, CryptographyAlgorithmService> =
         cryptographyAlgorithmServices.associateBy { it.algorithm }
