@@ -6,8 +6,11 @@ import penguin.penground.model.CryptographyAlgorithm
 
 @Component
 class CryptographyAlgorithmFactory(
-    val cryptographyAlgorithmServiceMap: Map<CryptographyAlgorithm, CryptographyAlgorithmService>
+    cryptographyAlgorithmServices: List<CryptographyAlgorithmService>,
 ) {
+    val cryptographyAlgorithmServiceMap: Map<CryptographyAlgorithm, CryptographyAlgorithmService> =
+        cryptographyAlgorithmServices.associateBy { it.algorithm }
+
     fun getCryptographyAlgorithm(algorithm: CryptographyAlgorithm): CryptographyAlgorithmService {
         return cryptographyAlgorithmServiceMap[algorithm]
             ?: throw RuntimeException("Unsupported algorithm")
