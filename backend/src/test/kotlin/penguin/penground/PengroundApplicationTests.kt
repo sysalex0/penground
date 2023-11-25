@@ -1,7 +1,7 @@
 package penguin.penground
 
+import base.BaseIntegrationTest
 import org.junit.jupiter.api.Test
-import penguin.penground.integration.BaseIntegrationTest
 
 class PengroundApplicationTests : BaseIntegrationTest() {
 

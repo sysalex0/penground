@@ -1,22 +1,17 @@
 package penguin.penground.integration.controller
 
+import base.BaseIntegrationTest
 import org.hamcrest.Matchers.not
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
-import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import penguin.penground.integration.BaseIntegrationTest
 import penguin.penground.model.CryptographyAlgorithm
 import penguin.penground.model.DecryptionRequest
 import penguin.penground.model.EncryptionRequest
 
-class CryptographyControllerTest : BaseIntegrationTest() {
-    @Autowired
-    private lateinit var mockMvc: MockMvc
-
+class CryptographyApiControllerTest : BaseIntegrationTest() {
     @Test
     fun `Given a valid encryption request, when invoke cryptographyEncryptPost, then return response with encrypted payload and 200 status code`() {
         val request = EncryptionRequest("testing", CryptographyAlgorithm.lKH)
