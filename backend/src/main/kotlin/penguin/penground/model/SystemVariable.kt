@@ -1,23 +1,21 @@
 package penguin.penground.model
 
 import jakarta.persistence.Column
+import jakarta.persistence.Embeddable
+import jakarta.persistence.EmbeddedId
 import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.IdClass
 import java.io.Serializable
 
+@Embeddable
 class SystemVariableId(
-    private val variableType: String,
-    private val variableCode: String
+    val variableType: String,
+    val variableCode: String
 ) : Serializable
 
-@IdClass(SystemVariableId::class)
 @Entity
 class SystemVariable(
-    @Id
-    val variableType: String,
-    @Id
-    val variableCode: String,
+    @EmbeddedId
+    val systemVariableId: SystemVariableId,
     @Column(nullable = false)
     val variableContent: String
 )

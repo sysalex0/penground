@@ -20,6 +20,8 @@ servers:
 tags:
   - name: cryptography
     description: Perform fun encryption / decryption
+  - name: ping-pong
+    description: Testing
 paths:
   /cryptography/encrypt:
     post:
@@ -87,6 +89,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /ping:
+    get:
+      tags:
+        - ping-pong
+      summary: ping-pong
+      responses:
+        200:
+          description: pong
 
 components:
   schemas:
