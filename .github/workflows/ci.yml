@@ -29,3 +29,9 @@ jobs:
           file: Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/penground:latest
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Deploy to dev
+        run: curl ${{ secrets.DEPLOY_HOOK }}
