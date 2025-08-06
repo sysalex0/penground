@@ -95,3 +95,15 @@ typings/
 out/
 .project
 .settings
+
+# AI assistant files
+CLAUDE.md
+.ai/*
+.claude
+.gemini
+.clinerules
+
+# Project-specific
+.bmad-core
+.bmad-creator-tools
+web-bundles
