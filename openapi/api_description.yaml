@@ -116,6 +116,7 @@ components:
       enum:
         - LKH
         - SYS
+        - ROT13
     CryptographyResponse:
       type: object
       properties:

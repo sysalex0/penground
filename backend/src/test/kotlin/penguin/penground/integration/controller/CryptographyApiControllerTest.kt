@@ -41,4 +41,34 @@ class CryptographyApiControllerTest : BaseIntegrationTest() {
             .andExpect(jsonPath("$.payload").isNotEmpty)
             .andExpect(jsonPath("$.payload").value("testing"))
     }
+
+    @Test
+    fun `Given a valid rot13 encryption request, when invoke cryptographyEncryptPost, then return response with encrypted payload and 200 status code`() {
+        val request = EncryptionRequest("testing", CryptographyAlgorithm.rOT13)
+
+        mockMvc.perform(
+            MockMvcRequestBuilders
+                .post("/api/v1/cryptography/encrypt")
+                .content(objectMapper.writeValueAsBytes(request))
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+            .andExpect(status().is2xxSuccessful())
+            .andExpect(jsonPath("$.payload").isNotEmpty)
+            .andExpect(jsonPath("$.payload").value("grfgvat"))
+    }
+
+    @Test
+    fun `Given a valid rot13 decryption request, when invoke cryptographyDecryptPost, then return response with decrypted payload and 200 status code`() {
+        val request = DecryptionRequest("grfgvat", CryptographyAlgorithm.rOT13)
+
+        mockMvc.perform(
+            MockMvcRequestBuilders
+                .post("/api/v1/cryptography/decrypt")
+                .content(objectMapper.writeValueAsBytes(request))
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+            .andExpect(status().is2xxSuccessful())
+            .andExpect(jsonPath("$.payload").isNotEmpty)
+            .andExpect(jsonPath("$.payload").value("testing"))
+    }
 }
