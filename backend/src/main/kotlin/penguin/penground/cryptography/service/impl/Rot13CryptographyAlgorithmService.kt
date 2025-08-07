@@ -2,7 +2,6 @@ package penguin.penground.cryptography.service.impl
 
 import org.springframework.stereotype.Service
 import penguin.penground.cryptography.service.CryptographyAlgorithmService
-
 import penguin.penground.model.CryptographyAlgorithm
 
 @Service

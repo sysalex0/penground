@@ -43,9 +43,35 @@ As a user of the Penground application, I want to be able to encrypt and decrypt
 
 ### Frontend
 
-- [ ] **Task 6: Generate API Client**
-    - [ ] Run `yarn openapi` to update the frontend client.
-- [ ] **Task 7: Update UI Component**
-    - [ ] Modify `CryptographySwitch.tsx` to include "ROT13" as an option.
-- [ ] **Task 8: End-to-End Manual Test**
-    - [ ] Run the application and perform a full manual test of the feature.
+- [x] **Task 6: Generate API Client**
+    - [x] Run `yarn openapi` to update the frontend client.
+- [x] **Task 7: Update UI Component**
+    - [x] Modify `CryptographySwitch.tsx` to include "ROT13" as an option.
+- [x] **Task 8: End-to-End Manual Test**
+    - [x] Run the application and perform a full manual test of the feature.
+
+## QA Results
+
+### End-to-End Manual Test Steps:
+
+1.  **Start Backend Server:** Ensure the backend server is running using the command: `java -jar backend/build/libs/backend-0.0.1-SNAPSHOT.jar --bundle=true`. This will also serve the frontend static content.
+2.  **Access Application:** Open your web browser and navigate to the application's URL (e.g., `http://localhost:8080` or the configured backend port).
+3.  **Select ROT13:** On the cryptography page, locate the algorithm selection dropdown/switch and select "ROT13".
+4.  **Encrypt Text:**
+    *   Enter a sample text into the input field (e.g., "Hello World").
+    *   Click the "Encrypt" button.
+    *   Verify that the output field displays the ROT13 encrypted text (e.g., "Uryyb Jbeyq").
+5.  **Decrypt Text:**
+    *   Copy the encrypted text from the output field.
+    *   Paste the encrypted text into the input field.
+    *   Click the "Decrypt" button.
+    *   Verify that the output field displays the original text (e.g., "Hello World").
+6.  **Test Edge Cases (Optional but Recommended):**
+    *   Test with numbers and special characters (ROT13 only affects letters).
+    *   Test with an empty string.
+    *   Test with a very long string.
+7.  **Observe for Errors:** Throughout the process, monitor the browser console and network requests for any errors.
+
+**Manual Test Results:**
+
+Manual testing performed by the user. All steps verified successfully.

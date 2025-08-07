@@ -5,7 +5,7 @@ plugins {
 }
 
 node {
-    version.set("18.18.0")
+    version.set("20.11.0")
     npmVersion.set("")
     yarnVersion.set("")
     distBaseUrl.set("https://nodejs.org/dist")
